@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RollTrack — Material &amp; Garment Inventory</title>
+<title>NDS Material — Material &amp; Garment Inventory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -250,7 +250,7 @@ form .form-grid.cols-3{grid-template-columns:repeat(3,1fr);}
 </head>
 <body>
 
-<div id="loader"><div class="spool"></div><p>Loading RollTrack…</p></div>
+<div id="loader"><div class="spool"></div><p>Loading NDS Material…</p></div>
 
 <div id="auth-screen" style="display:none;"></div>
 
@@ -268,7 +268,7 @@ form .form-grid.cols-3{grid-template-columns:repeat(3,1fr);}
 
 <script>
 /* ============================================================
-   ROLLTRACK — Material Receiving, Stock & Garment Issue Tracker
+   NDS Material — Material Receiving, Stock & Garment Issue Tracker
    Single-file app. Data persisted via window.storage (shared).
    ============================================================ */
 
@@ -582,7 +582,7 @@ function renderSidebar(){
   const html = `
     <div class="brand">
       <svg class="mark" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#E8C68C" stroke-width="2"/><path d="M16 4v24M6 9l20 14M26 9 6 23" stroke="#E8C68C" stroke-width="1.3" opacity=".55"/><circle cx="16" cy="16" r="4.5" fill="#E8C68C"/></svg>
-      <div><div class="name">RollTrack</div><div class="sub">${esc(APP.storeName)}</div></div>
+      <div><div class="name">NDS Material</div><div class="sub">${esc(APP.storeName)}</div></div>
     </div>
     <nav class="navlist">
       ${visibleNav.map(n=>`<button class="navitem ${APP.route===n.id?'active':''}" onclick="setRoute('${n.id}')">${icon(n.icon,17)}<span>${n.label}</span></button>`).join('')}
@@ -2008,7 +2008,7 @@ function openPrintTag(batchId){
         <button class="btn btn-primary" onclick="doPrintTags('${b.id}')">${icon('printer',15)} Print</button>
       </div>
       <button class="btn btn-ghost btn-sm" style="margin-top:10px;" onclick="generateBatchPDF('${b.id}')">${icon('printer',13)} Download full detail sheet (PDF)</button>
-      <p class="helptext" style="margin-top:10px;">Scanning the QR with any phone camera opens this batch in RollTrack and offers the full detail sheet as a downloadable PDF (works once this app is opened via its shared link). Staff can also look up "${b.id}" under Track / Lookup for live remaining stock.</p>
+      <p class="helptext" style="margin-top:10px;">Scanning the QR with any phone camera opens this batch in NDS Material and offers the full detail sheet as a downloadable PDF (works once this app is opened via its shared link). Staff can also look up "${b.id}" under Track / Lookup for live remaining stock.</p>
     </div>
   `);
 }
@@ -2039,7 +2039,7 @@ function generateBatchPDF(batchId){
     let y = 18;
 
     doc.setFont('helvetica','bold'); doc.setFontSize(16);
-    doc.text(APP.storeName || 'RollTrack', 14, y);
+    doc.text(APP.storeName || 'NDS Material', 14, y);
     y += 6;
     doc.setFont('helvetica','normal'); doc.setFontSize(11); doc.setTextColor(110);
     doc.text('Batch detail sheet', 14, y);
@@ -2106,7 +2106,7 @@ function generateBatchPDF(batchId){
     }
 
     doc.setFontSize(8); doc.setTextColor(150);
-    doc.text('Generated '+new Date().toLocaleString()+' · Scan the QR code or visit Track / Lookup in RollTrack for live remaining stock.', 14, 290);
+    doc.text('Generated '+new Date().toLocaleString()+' · Scan the QR code or visit Track / Lookup in NDS Material for live remaining stock.', 14, 290);
 
     doc.save(b.id+'.pdf');
   }catch(e){
@@ -2121,7 +2121,7 @@ function authBrandHTML(){
   return `
     <div class="auth-brand">
       <svg class="mark" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#B97A2A" stroke-width="2"/><path d="M16 4v24M6 9l20 14M26 9 6 23" stroke="#B97A2A" stroke-width="1.3" opacity=".55"/><circle cx="16" cy="16" r="4.5" fill="#B97A2A"/></svg>
-      <div class="name">RollTrack</div>
+      <div class="name">NDS Material</div>
       <div class="tag">Material &amp; Garment Inventory</div>
     </div>`;
 }
@@ -2194,7 +2194,7 @@ async function handleBootstrapSubmit(ev){
 function renderLoginScreen(prefillErr){
   showAuthScreen(`
     <h2>Sign in</h2>
-    <p class="sub">Enter your RollTrack username and password.</p>
+    <p class="sub">Enter your NDS Material username and password.</p>
     <div id="auth-err">${prefillErr?`<div class="errbox">${esc(prefillErr)}</div>`:''}</div>
     <form onsubmit="return handleLoginSubmit(event)">
       <div class="field"><label>Username</label><input id="lg_username" required autofocus></div>
